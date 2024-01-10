@@ -46,7 +46,7 @@ export default function Dictionary() {
                 placeholder="sunset"
               />
             </form>
-            <span>e.g. enchant, battle, delight</span>
+            <span>e.g. bug, darkness, clarity</span>
           </div>
         </section>
         <Results results={results} />
