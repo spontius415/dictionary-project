@@ -15,7 +15,6 @@ export default function Dictionary() {
   function handleSubmit(event) {
     event.preventDefault();
     search();
-    alert(`Searching for ${keyword} definition`);
   }
 
   function search() {
