@@ -43,7 +43,7 @@ export default function Dictionary() {
               <input
                 type="search"
                 onChange={handleKeywordChange}
-                placeholder="sunset"
+                placeholder="sunrise"
               />
             </form>
             <span>e.g. bug, darkness, clarity</span>
