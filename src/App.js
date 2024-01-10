@@ -12,7 +12,16 @@ function App() {
         <main>
           <Dictionary />
         </main>
-        <footer className="App-footer">Coded by Sarah Pontius</footer>
+        <footer className="App-footer">
+          Coded by
+          <a href="https://github.com/spontius415"> Sarah Pontius</a> and is{" "}
+          <a href="https://github.com/spontius415/dictionary-project">
+            {" "}
+            open-sourced
+          </a>{" "}
+          and hosted on{" "}
+          <a href="https://luxury-froyo-4ba940.netlify.app/"> Netlify</a>
+        </footer>
       </div>
     </div>
   );

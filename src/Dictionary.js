@@ -1,18 +1,24 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./Dictionary.css";
+import Results from "./Results.js";
 
 export default function Dictionary() {
-  let [keyword, setKeyword] = useState("");
+  let [keyword, setKeyword] = useState("sunrise");
+  let [results, setResults] = useState(null);
+  let [loaded, setLoaded] = useState(false);
 
   function handleResponse(response) {
-    console.log(response.data[0]);
+    setResults(response.data);
   }
 
-  function search(event) {
+  function handleSubmit(event) {
     event.preventDefault();
+    search();
     alert(`Searching for ${keyword} definition`);
+  }
 
+  function search() {
     let apiKey = "4bt8b93f064b82fc559aa03do3abc2f3";
     let apiUrl = `https://api.shecodes.io/dictionary/v1/define?word=${keyword}&key=${apiKey}`;
     axios.get(apiUrl).then(handleResponse);
@@ -21,11 +27,32 @@ export default function Dictionary() {
   function handleKeywordChange(event) {
     setKeyword(event.target.value);
   }
-  return (
-    <div className="Dictionary">
-      <form onSubmit={search}>
-        <input type="search" autoFocus={true} onChange={handleKeywordChange} />
-      </form>
-    </div>
-  );
+
+  function load() {
+    setLoaded(true);
+    search();
+  }
+
+  if (loaded) {
+    return (
+      <div className="Dictionary">
+        <section>
+          <h1>What word do you want to look up?</h1>
+          <div className="search">
+            <form onSubmit={handleSubmit} className="searchbar">
+              <input
+                type="search"
+                onChange={handleKeywordChange}
+                placeholder="sunset"
+              />
+            </form>
+            <span>e.g. enchant, battle, delight</span>
+          </div>
+        </section>
+        <Results results={results} />
+      </div>
+    );
+  } else {
+    load();
+  }
 }
