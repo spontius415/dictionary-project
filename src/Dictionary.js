@@ -31,12 +31,8 @@ export default function Dictionary() {
     let pexelsApiKey =
       "h81XIEXaSl4UbAN1R6DpOMwBqvGaJuaq6zQo84Ouxx4TriBvew7WAelJ";
     let pexelsApiUrl = `https://api.pexels.com/v1/search?query=${keyword}&per_page=3`;
-    let headers = { Authorization: `Bearer ${pexelsApiKey}` };
-    axios
-      .get(pexelsApiUrl, {
-        headers: headers,
-      })
-      .then(handlePexelsResponse);
+    let headers = { Authorization: `${pexelsApiKey}` };
+    axios.get(pexelsApiUrl, { headers: headers }).then(handlePexelsResponse);
   }
 
   function handleKeywordChangeSet(event) {
