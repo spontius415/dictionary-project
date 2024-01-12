@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import axios from "axios";
 import "./Dictionary.css";
+import axios from "axios";
 import Results from "./Results.js";
 
 export default function Dictionary() {
@@ -23,7 +23,7 @@ export default function Dictionary() {
     axios.get(apiUrl).then(handleResponse);
   }
 
-  function handleKeywordChange(event) {
+  function handleKeywordChangeSet(event) {
     setKeyword(event.target.value);
   }
 
@@ -41,11 +41,11 @@ export default function Dictionary() {
             <form onSubmit={handleSubmit} className="searchbar">
               <input
                 type="search"
-                onChange={handleKeywordChange}
+                onChange={handleKeywordChangeSet}
                 placeholder="sunrise"
               />
             </form>
-            <span>e.g. bug, darkness, clarity</span>
+            <span className="hint">e.g. bug, turtleneck, clarity</span>
           </div>
         </section>
         <Results results={results} />
